@@ -1,0 +1,209 @@
+﻿@model Prodavnica_gramofonskih_ploca.Models.GramofonskaPloca
+@using Prodavnica_gramofonskih_ploca.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IzmenaPloce</title>
+</head>
+<body>
+     
+    <div>
+
+        <form action="../AdministratorskiPrikaz/IzmenjenaPloca" method="post">
+            <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td colspan="2">
+                        <p style="color:red">
+                            @ViewBag.NijePronadjena
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Naziv ploce</p>
+                    </td>
+                    <td style="text-align:center">
+                        <input type="text" name="Naziv" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        <p>Izvodjac</p>
+                    </td>
+                    <td style="text-align:center">
+                        <input type="text" name="Izvodjac" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        <p>Stanje</p>
+                    </td>
+                    <td>
+                        <input list="stanjePloce" name="Stanje" required>
+                        <datalist id="stanjePloce">
+                            <option value="STARA" />
+                            <option value="NOVA" />
+                        </datalist>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        <p>Zanr</p>
+                    </td>
+                    <td>
+                        <input list="zanrPloce" name="Zanr" required>
+                        <datalist id="zanrPloce">
+                            <option value="METAL" />
+                            <option value="POP" />
+                            <option value="BLACKMETAL" />
+                            <option value="ALTROCK" />
+                            <option value="JAZZ" />
+                        </datalist>
+
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Opis</p>
+                    </td>
+                    <td style="text-align:center">
+                        <input type="text" name="Opis" required />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <p style="color:red">
+                            @ViewBag.GreskaCena
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Cena</p>
+                    </td>
+                    <td style="text-align:center">
+                        <input type="number" name="Cena" required />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <p style="color:red">
+                            @ViewBag.GreskaBrojKopija
+                        </p>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Broj kopija na stanju</p>
+                    </td>
+                    <td style="text-align:center">
+                        <input type="number" name="BrojKopijaNaStanju" required />
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Obrisana</p>
+                    </td>
+                    <td style="text-align:center">
+
+                        <input list="DaLiJeObrisana" name="obrisana" required />
+                        <datalist id="DaLiJeObrisana">
+                            <option value="TRUE" />
+                            <option value="FALSE" />
+
+                        </datalist>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align:center">
+                        <p>Na prodaju</p>
+                    </td>
+                    <td style="text-align:center">
+
+                        <input list="DaLiJeNaProdaju" name="naprodaju" required />
+                        <datalist id="DaLiJeNaProdaju">
+                            <option value="TRUE" />
+                            <option value="FALSE" />
+
+                        </datalist>
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td style="text-align:center">
+                        <p>Naziv radnje</p>
+                    </td>
+                    <td>
+
+                        <input list="radnjePloca" name="NazivRadnje" />
+                        <datalist id="radnjePloca">
+
+
+                            @{
+                                Dictionary<string, Radnja> radnje = (Dictionary<string, Radnja>)HttpContext.Current.Application["radnje"];
+                                foreach (var r in radnje.Values)
+                                {
+                                    <option>
+                                        @r.Naziv
+                                    </option>
+                                }
+
+                            }
+
+                        </datalist>
+
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td colspan="2" align="center">
+
+                        @*//<input type="text" name="naziv" value="@Model.Naziv" hidden>*@
+                        <button type="submit">Izmena</button>
+
+                    </td>
+                </tr>
+
+               
+
+            </table>
+        </form>
+        @*<table >
+            <tr>
+                <td>
+                    <form action="../AdministratorskiPrikaz/IzmenjenaPloca" method="post">
+                        <input type="text" name="naziv" value="@Model.Naziv" hidden>
+                        <button type="submit">Izmena</button>
+                    </form>
+
+                </td>
+            </tr>
+        </table>*@
+    </div>
+</body>
+</html>

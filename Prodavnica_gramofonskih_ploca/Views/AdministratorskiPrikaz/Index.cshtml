@@ -1,0 +1,403 @@
+﻿@using Prodavnica_gramofonskih_ploca.Models;
+<html>
+    <head>
+
+    </head>
+<body>
+    <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Izvodjac
+            </th>
+            <th>
+                Stanje
+            </th>
+            <th>
+                Zanr
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Broj kopija
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Obrisana
+            </th>
+            <th>
+                Na prodaju
+            </th>
+            <th>
+                Radnja
+            </th>
+
+        </tr>
+
+        @{
+            Dictionary<string, GramofonskaPloca> ploce = (Dictionary<string, GramofonskaPloca>)HttpContext.Current.Application["ploce"];
+
+            foreach (var ploca in ploce.Values)
+            {
+                if (ploca.Obrisana == false && ploca.BrojKopijaNaStanju > 0)
+                {
+                <tr>
+                    <td style="text-align:center">
+
+                        @ploca.Naziv
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Izvodjac
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Stanje
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Zanr
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Opis
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.BrojKopijaNaStanju
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Cena
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.Obrisana
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.NaProdaju
+
+                    </td>
+                    <td style="text-align:center">
+
+                        @ploca.NazivRadnje
+
+                    </td>
+                  
+                </tr>
+
+                    
+                }
+
+            }
+        }
+
+                <tr>
+                    <td colspan="11" align="center">
+                        <form method="post" action="../AdministratorskiPrikaz/DodavanjeNovePloce">
+                            <input type="submit" value="DodavanjeNovePloce" />
+                        </form>
+                    </td>
+                    
+                </tr>
+
+                <tr>
+                    <td  colspan="11" style="text-align:center">
+
+                        <form method="post" action="~/AdministratorskiPrikaz/IzmenaPloce">
+
+                            <button type="submit">Izmeni</button>
+                        </form>
+
+
+
+                    </td>
+
+                </tr>
+
+
+    </table>
+
+    <div>
+        <form action="../AdministratorskiPrikaz/Sortiraj" method="post">
+
+            <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td>
+
+
+                        Sortiranje po
+
+                    </td>
+                    <td>
+
+                        <input list="izborSortiranja" name="kriterijum" required>
+                        <datalist id="izborSortiranja">
+                            <option value="Nazivu"></option>
+                            <option value="Autoru"></option>
+                            <option value="Ceni"></option>
+                        </datalist>
+
+                    </td>
+
+                    <td>
+
+                        Kriterijum
+
+                    </td>
+                    <td>
+
+                        <input list="nacinSortiranja" name="nacin" required>
+                        <datalist id="nacinSortiranja">
+                            <option value="Rastuce"></option>
+                            <option value="Opadajuce"></option>
+                        </datalist>
+
+                    </td>
+
+                    <td colspan="2">
+                        <button type="submit"> Potvrdi!</button>
+                    </td>
+
+                </tr>
+            </table>
+        </form>
+
+
+        <form action="../AdministratorskiPrikaz/PretraziPoAutoruIliNazivu" method="post">
+            <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td>
+
+                        Pretrazi po
+
+                    </td>
+                    <td>
+                        <input list="izborPretrage" name="pretragaPoNazivuIliAutoru" required>
+                        <datalist id="izborPretrage">
+                            <option value="Nazivu"></option>
+                            <option value="Autoru"></option>
+
+                        </datalist>
+
+                    </td>
+
+                    <td>
+
+                        Naziv ili autor
+
+                    </td>
+                    <td>
+
+                        <input type="text" name="naziviliautor" required />
+
+                    </td>
+
+
+                    <td colspan="2">
+                        <button type="submit"> Pretrazi!</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        <form method="post" action="../AdministratorskiPrikaz/PretraziPoCeni">
+            <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+
+                <tr>
+                    <td>
+
+                        Pretraga po ceni(od-do)
+
+                    </td>
+
+
+                    <td>
+
+                        <input type="number" name="odCene" required />
+
+                    </td>
+                    <td>
+
+
+                        <input type="number" name="doCene" required />
+
+                    </td>
+
+
+
+                    <td colspan="2">
+                        <button type="submit"> Pretrazi!</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+            <tr>
+                <th>
+                    Korisnicko ime
+                </th>
+                <th>
+                    Lozinka
+                </th>
+                <th>
+                    Ime
+                </th>
+                <th>
+                    Prezime
+                </th>
+                <th>
+                    Datum rodjenja
+                </th>
+                <th>
+                    Pol korisnika
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Uloga
+                </th>
+            </tr>
+
+            @{
+                Dictionary<string, Korisnik> korisnici = (Dictionary<string, Korisnik>)HttpContext.Current.Application["korisnici"];
+
+                foreach (var korisnik in korisnici.Values)
+                {
+                    if (korisnik.Uloga.Equals(TipKorisnika.KUPAC) && korisnik.Obrisan == false)
+                    {
+                        <tr>
+                            <td style="text-align:center">
+
+                               @korisnik.KorisnickoIme
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.Lozinka
+
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.Ime
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.Prezime
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.DatumRodjenja
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.PolKorisnika
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.Email
+
+                            </td>
+                            <td style="text-align:center">
+
+                                @korisnik.Uloga
+
+                            </td>
+                            <td style="text-align:center">
+
+                                <form method="post" action="../AdministratorskiPrikaz/BrisanjeKorisnika">
+                                    <input type="text" name="korisnickoIme" value="@korisnik.KorisnickoIme" hidden>
+                                    <button type="submit">Brisanje</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+
+
+                }
+            }
+
+        </table>
+
+        <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+
+            <tr>
+                <th>
+                    Naziv
+                </th>
+                <th>
+                    Adresa
+                </th>
+            </tr>
+
+            @{
+                Dictionary<string, Radnja> radnje = (Dictionary<string, Radnja>)HttpContext.Current.Application["radnje"];
+                foreach (Radnja r in radnje.Values)
+                {
+                    if (r.Obrisan == false)
+                    {
+                        <tr>
+
+                            <td style="text-align:center">
+                                @r.Naziv
+                            </td>
+                            <td style="text-align:center">
+                                @r.Adresa
+                            </td>
+
+                            <td style="text-align:center">
+
+                                <form method="post" action="../AdministratorskiPrikaz/BrisanjeRadnje">
+                                    <input type="text" name="naziv" value="@r.Naziv" hidden>
+                                    <button type="submit">Brisanje</button>
+                                </form>
+
+                            </td>
+
+                           
+
+                        </tr>
+
+                    }
+
+                }
+            }
+            <tr>
+                <td colspan="4" align="center">
+                    <form method="post" action="../AdministratorskiPrikaz/DodavanjeNoveRadnje">
+                        <input type="submit" value="Dodavanje nove radnje" />
+                    </form>
+                </td>
+            </tr>
+
+
+
+        </table>
+
+    </div>
+</body>
+
+</html>

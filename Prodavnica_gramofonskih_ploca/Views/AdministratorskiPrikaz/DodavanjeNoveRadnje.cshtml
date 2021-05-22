@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DodavanjeNoveRadnje</title>
+</head>
+<body>
+    <div> 
+        <form action="../AdministratorskiPrikaz/DodataRadnja" method="post">
+            <table style="border: 1px solid black;margin-left:auto;margin-right:auto;">
+                
+                <tr>
+                    <td colspan="2">
+                        <p style="color:red">
+                            @ViewBag.GreskaNazivPostojeci
+                        </p>
+                      
+                    </td>
+                </tr>
+                <tr>
+
+                    <td style="text-align:center">
+                        Naziv radnje
+                    </td>
+                    <td style="text-align:center">
+                        <input type="text" name="naziv" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        Adresa
+                    </td>
+                    <td style="text-align:center">
+                        <input type="text" name="adresa" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <input type="submit" value="Dodaj" required />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

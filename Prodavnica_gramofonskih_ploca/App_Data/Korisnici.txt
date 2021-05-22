@@ -1,0 +1,6 @@
+﻿isidora123;isidorabog;isidora;bogdanovic;Zenski;isidorabog028@gmail.com;04/28/1999;ADMINISTRATOR;false
+pera59;pera123;pera;peric;Muski;pera123@gmail.com;02/10/2000;ADMINISTRATOR;false
+marko;marko123;marko;maric;Muski;marko123@gmail.com;02/10/2000;KUPAC;false
+maki123;marko123;marko;maric;25/05/2021;Muski;isidorabog028@gmail.com;KUPAC;False
+mirko;mirkic1234;mirko;mirkic;25/05/2021;Muski;isidorabog028@gmail.com;KUPAC;False
+mario;mario1234;mario;maric;25/05/2021;Muski;isidorabog028@gmail.com;KUPAC;False

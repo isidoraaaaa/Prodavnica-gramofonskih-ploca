@@ -1,0 +1,89 @@
+﻿@using Prodavnica_gramofonskih_ploca.Models;
+@{
+    Layout = null;
+ }
+<html>
+<head>
+    <link rel="stylesheet" href="../Content/dizajn.css">
+</head>
+<body>
+    <div>@ViewBag.Message</div>
+    <form class="registration" method="post" action="../Registracija/Registruj">
+        <h1>👋Registrujte se!</h1>
+
+        <p style="color:#0096FB">@ViewBag.GreskaKorisnickoImeDuzina</p>
+        <p style="color:#0096FB">@ViewBag.GreskaKorisnickoImeJedinstveno</p>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="text" name="KorisnickoIme" required>
+            <span>Korisnicko ime</span>
+        </label>
+
+        <p style="color:#0096FB">@ViewBag.GreskaLozinkaDuzina</p>
+        <p style="color:#0096FB">@ViewBag.greskaLozinkaKarakteri</p>
+
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="password" name="Lozinka" required>
+            <span>Lozinka</span>
+        </label>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="text" name="Ime" required>
+            <span>Ime</span>
+        </label>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="text" name="Prezime" required>
+            <span>Prezime</span>
+        </label>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder="" list="polovi" name="PolKorisnika" required>
+            <datalist id="polovi">
+                <option value="Muski" />
+                <option value="Zenski" />
+            </datalist>
+            <span>Pol</span>
+        </label>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="email" name="Email" required>
+            <span>Email</span>
+        </label>
+
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="date" name="DatumRodjenja" required>
+            <span>Datum rodjenja</span>
+        </label>
+
+
+
+        <button class="pure-material-button-contained" type="submit">Registruj se!</button>
+
+    </form>
+@*<div>
+
+    @{
+        Dictionary<string,Korisnik> korisnici = (Dictionary<string,Korisnik>)HttpContext.Current.Application["korisnici"];
+        foreach (var k in korisnici.Values)
+        {
+            <p>@k.KorisnickoIme</p>
+            <p>@k.Lozinka</p>
+            <p>@k.Ime</p>
+            <p>@k.Prezime</p>
+            <p>@k.PolKorisnika</p>
+            <p>@k.DatumRodjenja</p>
+            <p>@k.Email</p>
+            <p>@k.Uloga</p>
+
+
+
+        }
+    }
+</div>*@
+
+</body>
+</html>
+

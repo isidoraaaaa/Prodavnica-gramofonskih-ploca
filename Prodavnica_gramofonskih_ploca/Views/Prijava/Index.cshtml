@@ -1,0 +1,34 @@
+﻿@using Prodavnica_gramofonskih_ploca.Models;
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <link rel="stylesheet" href="../Content/dizajn.css">
+</head>
+<body>
+
+    <form class="registration" method="post" action="../Prijava/Prijavljivanje">
+        <h1>👋Prijavite se!</h1>
+
+        <p style="color:#0096FB">@ViewBag.greskaKorisnickoImeNeispravno</p>
+        <p style="color:#0096FB">@ViewBag.GreskaObrisanKorisnik</p>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="text" name="korisnickoime" required>
+            <span>Korisnicko ime</span>
+        </label>
+
+        <p style="color:#0096FB">@ViewBag.GreskaNeodgovarajucaLozinka</p>
+
+        <label class="pure-material-textfield-outlined">
+            <input placeholder=" " type="password" name="Lozinka" required>
+            <span>Lozinka</span>
+        </label>
+
+        <button class="pure-material-button-contained" type="submit"> Prijava!</button>
+    </form>
+
+</body>
+</html>
+
