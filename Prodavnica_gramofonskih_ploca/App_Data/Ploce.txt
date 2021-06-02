@@ -2,4 +2,4 @@
 Unknown Pleasures;Joy Divison;STARA;ROCK;Zanimljive korice koje podsecaju na talas i na planinu istovremeno;15000;9;false;true;radnja2
 Tranquility Base Hotel & Casino;Arctic Monkeys;NOVA;ROCK;Nedefinisan izgled korica;13000;14;false;true;radnja1
 Dark Side Of The Moon;Pink Floyd;STARA;ROCK;Veoma cudne korice sa prelamanjem svetla;20000;10;true;true;radnja2
-Back to black;Amy Winehouse;NOVA;JAZZ;Jedinstveni osecaj koji pruzaju pesme autorke;16000;60;false;true;radnja1
+Back to black;Amy Winehouse;NOVA;JAZZ;Jedinstveni osecaj koji pruzaju pesme autorke;16000;60;false;true;radnja1ddasdfds;sfdsd;STARA;POP;dsfdsdsf;1000;100;False;True;Prodaja starih ploca
